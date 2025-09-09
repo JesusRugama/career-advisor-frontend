@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "generate:api:prompts": "npx @hey-api/openapi-ts -i http://localhost:8004/openapi.json -o ./src/lib/api/prompts -c @hey-api/client-next"
+    "generate:api:conversations": "npx @hey-api/openapi-ts -i http://localhost:8002/openapi.json -o ./src/lib/api/conversations -c @hey-api/client-next",
+    "generate:api:prompts": "npx @hey-api/openapi-ts -i http://localhost:8004/openapi.json -o ./src/lib/api/prompts -c @hey-api/client-next",
+    "generate:api": "npm-run-all generate:api:*"
   },
   "dependencies": {
     "next": "15.5.2",
@@ -24,6 +26,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
+    "npm-run-all": "^4.1.5",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
