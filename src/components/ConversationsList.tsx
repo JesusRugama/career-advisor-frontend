@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { getConversationsApiUsersUserIdConversationsGet, ConversationBase } from '@/lib/api/conversations';
 import ConversationsListItem from './ConversationsListItem';
+import { USER_ID } from '@/constants/user';
 
 export default function ConversationsList() {
   const [conversations, setConversations] = useState<ConversationBase[]>([]);
@@ -14,7 +15,7 @@ export default function ConversationsList() {
       try {
         setLoading(true);
         const response = await getConversationsApiUsersUserIdConversationsGet({
-          path: { user_id: '03574ae6-5bf2-49eb-ae77-eadf17347c24' }
+          path: { user_id: USER_ID }
         });
 
         if (response.data?.success && response.data.conversations) {

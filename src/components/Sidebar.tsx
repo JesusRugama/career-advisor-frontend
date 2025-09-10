@@ -11,8 +11,6 @@ export default function Sidebar({ children }: SidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
-    <div className="flex h-screen bg-gray-50">
-      {/* Sidebar */}
       <div className={`${isCollapsed ? 'w-16' : 'w-80'} transition-all duration-300 bg-white border-r border-gray-200 flex flex-col`}>
         {/* Sidebar Header */}
         <div className="p-4 border-b border-gray-200 flex items-center justify-between">
@@ -44,17 +42,11 @@ export default function Sidebar({ children }: SidebarProps) {
         <div className="flex-1 overflow-y-auto">
           {!isCollapsed && (
             <div className="p-4">
-              <ConversationsList />
+              {children}
             </div>
           )}
         </div>
 
       </div>
-
-      {/* Main Content */}
-      <div className="flex-1 overflow-y-auto">
-        {children}
-      </div>
-    </div>
   );
 }

@@ -37,6 +37,20 @@ export type ConversationListResponse = {
 };
 
 /**
+ * CreateMessageRequest
+ */
+export type CreateMessageRequest = {
+    /**
+     * Message
+     */
+    message: string;
+    /**
+     * Conversation Id
+     */
+    conversation_id?: string | null;
+};
+
+/**
  * HTTPValidationError
  */
 export type HttpValidationError = {
@@ -44,6 +58,57 @@ export type HttpValidationError = {
      * Detail
      */
     detail?: Array<ValidationError>;
+};
+
+/**
+ * MessageBase
+ */
+export type MessageBase = {
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Role
+     */
+    role: string;
+    /**
+     * Content
+     */
+    content: string;
+    /**
+     * Created At
+     */
+    created_at: string;
+    /**
+     * Conversation Id
+     */
+    conversation_id: string;
+};
+
+/**
+ * MessageListResponse
+ */
+export type MessageListResponse = {
+    /**
+     * Success
+     */
+    success: boolean;
+    /**
+     * Messages
+     */
+    messages: Array<MessageBase>;
+};
+
+/**
+ * MessageResponse
+ */
+export type MessageResponse = {
+    /**
+     * Success
+     */
+    success: boolean;
+    message: MessageBase;
 };
 
 /**
@@ -93,6 +158,74 @@ export type GetConversationsApiUsersUserIdConversationsGetResponses = {
 };
 
 export type GetConversationsApiUsersUserIdConversationsGetResponse = GetConversationsApiUsersUserIdConversationsGetResponses[keyof GetConversationsApiUsersUserIdConversationsGetResponses];
+
+export type GetConversationMessagesApiUsersUserIdConversationsConversationIdMessagesGetData = {
+    body?: never;
+    path: {
+        /**
+         * User Id
+         */
+        user_id: string;
+        /**
+         * Conversation Id
+         */
+        conversation_id: string;
+    };
+    query?: never;
+    url: '/api/users/{user_id}/conversations/{conversation_id}/messages';
+};
+
+export type GetConversationMessagesApiUsersUserIdConversationsConversationIdMessagesGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type GetConversationMessagesApiUsersUserIdConversationsConversationIdMessagesGetError = GetConversationMessagesApiUsersUserIdConversationsConversationIdMessagesGetErrors[keyof GetConversationMessagesApiUsersUserIdConversationsConversationIdMessagesGetErrors];
+
+export type GetConversationMessagesApiUsersUserIdConversationsConversationIdMessagesGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: MessageListResponse;
+};
+
+export type GetConversationMessagesApiUsersUserIdConversationsConversationIdMessagesGetResponse = GetConversationMessagesApiUsersUserIdConversationsConversationIdMessagesGetResponses[keyof GetConversationMessagesApiUsersUserIdConversationsConversationIdMessagesGetResponses];
+
+export type CreateConversationMessageApiUsersUserIdConversationsConversationIdMessagePostData = {
+    body: CreateMessageRequest;
+    path: {
+        /**
+         * User Id
+         */
+        user_id: string;
+        /**
+         * Conversation Id
+         */
+        conversation_id: string;
+    };
+    query?: never;
+    url: '/api/users/{user_id}/conversations/{conversation_id}/message';
+};
+
+export type CreateConversationMessageApiUsersUserIdConversationsConversationIdMessagePostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateConversationMessageApiUsersUserIdConversationsConversationIdMessagePostError = CreateConversationMessageApiUsersUserIdConversationsConversationIdMessagePostErrors[keyof CreateConversationMessageApiUsersUserIdConversationsConversationIdMessagePostErrors];
+
+export type CreateConversationMessageApiUsersUserIdConversationsConversationIdMessagePostResponses = {
+    /**
+     * Successful Response
+     */
+    200: MessageResponse;
+};
+
+export type CreateConversationMessageApiUsersUserIdConversationsConversationIdMessagePostResponse = CreateConversationMessageApiUsersUserIdConversationsConversationIdMessagePostResponses[keyof CreateConversationMessageApiUsersUserIdConversationsConversationIdMessagePostResponses];
 
 export type HealthCheckHealthGetData = {
     body?: never;
