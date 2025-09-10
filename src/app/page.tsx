@@ -1,11 +1,18 @@
-import ConversationsList from "@/components/ConversationsList";
+import Sidebar from "@/components/Sidebar";
 import PromptList from "@/components/PromptList";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <ConversationsList></ConversationsList>
-      <PromptList></PromptList>
-    </div>
+    <Sidebar>
+      <div className="p-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome to Career Advisor</h1>
+            <p className="text-gray-600">Get personalized career advice and guidance</p>
+          </div>
+          <PromptList />
+        </div>
+      </div>
+    </Sidebar>
   );
 }

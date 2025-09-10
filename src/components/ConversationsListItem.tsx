@@ -26,7 +26,7 @@ export default function ConversationsListItem({ conversation }: ConversationsLis
       className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer hover:border-gray-300"
       onClick={handleConversationClick}
     >
-      <div className="flex justify-between items-start">
+      <div className="flex flex-col justify-between items-start">
         <div className="flex-1 min-w-0">
           <h3 className="text-lg font-semibold text-gray-900 mb-1 truncate">
             {conversation.title}
@@ -35,7 +35,7 @@ export default function ConversationsListItem({ conversation }: ConversationsLis
             Created: {formatDate(conversation.created_at)}
           </p>
         </div>
-        <div className="flex items-center space-x-2 ml-4">
+        <div className="flex items-center space-x-2">
           <span className="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">
             ID: {conversation.id.slice(0, 8)}...
           </span>

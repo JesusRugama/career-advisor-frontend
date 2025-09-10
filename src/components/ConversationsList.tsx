@@ -4,10 +4,6 @@ import { useEffect, useState } from 'react';
 import { getConversationsApiUsersUserIdConversationsGet, ConversationBase } from '@/lib/api/conversations';
 import ConversationsListItem from './ConversationsListItem';
 
-interface ConversationsListProps {
-  userId: string;
-}
-
 export default function ConversationsList() {
   const [conversations, setConversations] = useState<ConversationBase[]>([]);
   const [loading, setLoading] = useState(true);
