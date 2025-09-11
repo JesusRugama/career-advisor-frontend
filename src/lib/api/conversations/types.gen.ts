@@ -44,10 +44,6 @@ export type CreateMessageRequest = {
      * Message
      */
     message: string;
-    /**
-     * Conversation Id
-     */
-    conversation_id?: string | null;
 };
 
 /**
@@ -109,6 +105,23 @@ export type MessageResponse = {
      */
     success: boolean;
     message: MessageBase;
+};
+
+/**
+ * MessageWithConversationResponse
+ */
+export type MessageWithConversationResponse = {
+    /**
+     * Success
+     */
+    success: boolean;
+    message: MessageBase;
+    /**
+     * Conversation
+     */
+    conversation: {
+        [key: string]: unknown;
+    };
 };
 
 /**
@@ -226,6 +239,36 @@ export type CreateConversationMessageApiUsersUserIdConversationsConversationIdMe
 };
 
 export type CreateConversationMessageApiUsersUserIdConversationsConversationIdMessagePostResponse = CreateConversationMessageApiUsersUserIdConversationsConversationIdMessagePostResponses[keyof CreateConversationMessageApiUsersUserIdConversationsConversationIdMessagePostResponses];
+
+export type CreateConversationAndMessageApiUsersUserIdMessagesPostData = {
+    body: CreateMessageRequest;
+    path: {
+        /**
+         * User Id
+         */
+        user_id: string;
+    };
+    query?: never;
+    url: '/api/users/{user_id}/messages';
+};
+
+export type CreateConversationAndMessageApiUsersUserIdMessagesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateConversationAndMessageApiUsersUserIdMessagesPostError = CreateConversationAndMessageApiUsersUserIdMessagesPostErrors[keyof CreateConversationAndMessageApiUsersUserIdMessagesPostErrors];
+
+export type CreateConversationAndMessageApiUsersUserIdMessagesPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: MessageWithConversationResponse;
+};
+
+export type CreateConversationAndMessageApiUsersUserIdMessagesPostResponse = CreateConversationAndMessageApiUsersUserIdMessagesPostResponses[keyof CreateConversationAndMessageApiUsersUserIdMessagesPostResponses];
 
 export type HealthCheckHealthGetData = {
     body?: never;

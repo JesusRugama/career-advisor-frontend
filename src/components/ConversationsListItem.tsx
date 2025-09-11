@@ -2,12 +2,12 @@ import { ConversationBase } from '@/lib/api/conversations';
 
 interface ConversationsListItemProps {
   conversation: ConversationBase;
+  onConversationSelect: (conversation: ConversationBase) => void;
 }
 
-export default function ConversationsListItem({ conversation }: ConversationsListItemProps) {
+export default function ConversationsListItem({ conversation, onConversationSelect }: ConversationsListItemProps) {
   const handleConversationClick = () => {
-    // TODO: Navigate to conversation detail page
-    console.log('Selected conversation:', conversation);
+    onConversationSelect(conversation);
   };
 
   const formatDate = (dateString: string) => {

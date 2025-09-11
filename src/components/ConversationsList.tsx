@@ -5,7 +5,11 @@ import { getConversationsApiUsersUserIdConversationsGet, ConversationBase } from
 import ConversationsListItem from './ConversationsListItem';
 import { USER_ID } from '@/constants/user';
 
-export default function ConversationsList() {
+interface ConversationsListProps {
+  onConversationSelect: (conversation: ConversationBase) => void;
+}
+
+export default function ConversationsList({ onConversationSelect }: ConversationsListProps) {
   const [conversations, setConversations] = useState<ConversationBase[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -64,7 +68,11 @@ export default function ConversationsList() {
       ) : (
         <div className="space-y-3">
           {conversations.map((conversation) => (
-            <ConversationsListItem key={conversation.id} conversation={conversation} />
+            <ConversationsListItem 
+              key={conversation.id} 
+              conversation={conversation} 
+              onConversationSelect={onConversationSelect}
+            />
           ))}
         </div>
       )}

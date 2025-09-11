@@ -1,13 +1,21 @@
+"use client";
+import { useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import PromptList from "@/components/PromptList";
 import ConversationsList from "@/components/ConversationsList";
 import MessagesList from "@/components/MessagesList";
+import { ConversationBase } from "@/lib/api/conversations";
 
 export default function Home() {
+  const [selectedConversation, setSelectedConversation] = useState<ConversationBase | null>(null);
+
+  const handleConversationSelect = (conversation: ConversationBase) => {
+    setSelectedConversation(conversation);
+  };
   return (
     <div className="flex h-screen bg-gray-50">
       <Sidebar>
-        <ConversationsList />
+        <ConversationsList onConversationSelect={handleConversationSelect} />
       </Sidebar>
 
       {/* Main Content */}
@@ -18,7 +26,9 @@ export default function Home() {
               <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome to Career Advisor</h1>
               <p className="text-gray-600">Get personalized career advice and guidance</p>
             </div>
-            <MessagesList conversationId="3f75dd21-a7a3-4235-a6ea-ca047db12829" />
+            {selectedConversation && (
+              <MessagesList conversationId={selectedConversation.id} />
+            )}
             <PromptList />
           </div>
         </div>

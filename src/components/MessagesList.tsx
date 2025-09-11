@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { MessageBase, getConversationMessagesApiUsersUserIdConversationsConversationIdMessagesGet } from '@/lib/api/conversations';
 import MessagesListItem from './MessagesListItem';
+import MessageInput from './MessageInput';
 import { USER_ID } from '@/constants/user';
 
 interface MessagesListProps {
@@ -80,19 +81,7 @@ export default function MessagesList({ conversationId }: MessagesListProps) {
         )}
       </div>
 
-      {/* Input Area */}
-      <div className="border-t border-gray-200 p-4 bg-white">
-        <div className="flex space-x-3">
-          <input
-            type="text"
-            placeholder="Type your message..."
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          />
-          <button className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
-            Send
-          </button>
-        </div>
-      </div>
+      <MessageInput conversationId={conversationId} />
     </div>
   );
 }
