@@ -1,10 +1,13 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { MessageBase, getConversationMessagesApiUsersUserIdConversationsConversationIdMessagesGet } from '@/lib/api/conversations';
-import MessagesListItem from './MessagesListItem';
-import MessageInput from './MessageInput';
-import { USER_ID } from '@/constants/user';
+import { useEffect, useState } from "react";
+import {
+  MessageBase,
+  getConversationMessagesApiUsersUserIdConversationsConversationIdMessagesGet,
+} from "@/lib/api/conversations";
+import MessagesListItem from "./MessagesListItem";
+import MessageInput from "./MessageInput";
+import { USER_ID } from "@/constants/user";
 
 interface MessagesListProps {
   conversationId: string;
@@ -19,21 +22,24 @@ export default function MessagesList({ conversationId }: MessagesListProps) {
     const fetchMessages = async () => {
       try {
         setLoading(true);
-        const response = await getConversationMessagesApiUsersUserIdConversationsConversationIdMessagesGet({
-          path: {
-            user_id: USER_ID,
-            conversation_id: conversationId
-          }
-        });
+        const response =
+          await getConversationMessagesApiUsersUserIdConversationsConversationIdMessagesGet(
+            {
+              path: {
+                user_id: USER_ID,
+                conversation_id: conversationId,
+              },
+            },
+          );
 
         if (response.data?.success && response.data.messages) {
           setMessages(response.data.messages);
         } else {
-          setError('Failed to fetch messages');
+          setError("Failed to fetch messages");
         }
       } catch (err) {
-        setError('Error loading messages');
-        console.error('Error fetching messages:', err);
+        setError("Error loading messages");
+        console.error("Error fetching messages:", err);
       } finally {
         setLoading(false);
       }
@@ -56,8 +62,8 @@ export default function MessagesList({ conversationId }: MessagesListProps) {
     return (
       <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
         <p className="text-red-700">{error}</p>
-        <button 
-          onClick={() => window.location.reload()} 
+        <button
+          onClick={() => window.location.reload()}
           className="mt-2 text-sm text-red-600 hover:text-red-800 underline"
         >
           Try again

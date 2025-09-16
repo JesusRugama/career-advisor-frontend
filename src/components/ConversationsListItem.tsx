@@ -1,28 +1,31 @@
-import { ConversationBase } from '@/lib/api/conversations';
+import { ConversationBase } from "@/lib/api/conversations";
 
 interface ConversationsListItemProps {
   conversation: ConversationBase;
   onConversationSelect: (conversation: ConversationBase) => void;
 }
 
-export default function ConversationsListItem({ conversation, onConversationSelect }: ConversationsListItemProps) {
+export default function ConversationsListItem({
+  conversation,
+  onConversationSelect,
+}: ConversationsListItemProps) {
   const handleConversationClick = () => {
     onConversationSelect(conversation);
   };
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
     });
   };
 
   return (
-    <div 
+    <div
       className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer hover:border-gray-300"
       onClick={handleConversationClick}
     >
@@ -39,7 +42,7 @@ export default function ConversationsListItem({ conversation, onConversationSele
           <span className="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">
             ID: {conversation.id.slice(0, 8)}...
           </span>
-          <button 
+          <button
             className="text-blue-600 hover:text-blue-800 text-sm font-medium px-3 py-1 rounded hover:bg-blue-50 transition-colors"
             onClick={(e) => {
               e.stopPropagation();

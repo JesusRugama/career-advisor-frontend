@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { createConversationMessageApiUsersUserIdConversationsConversationIdMessagePost } from '@/lib/api/conversations';
-import { USER_ID } from '@/constants/user';
+import { useState } from "react";
+import { createConversationMessageApiUsersUserIdConversationsConversationIdMessagePost } from "@/lib/api/conversations";
+import { USER_ID } from "@/constants/user";
 
 interface MessageInputProps {
   conversationId: string;
@@ -14,7 +14,7 @@ export default function MessageInput({ conversationId }: MessageInputProps) {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
-    const message = formData.get('message') as string;
+    const message = formData.get("message") as string;
 
     if (!message.trim()) return;
 
@@ -22,24 +22,27 @@ export default function MessageInput({ conversationId }: MessageInputProps) {
     setError(null);
 
     try {
-      const response = await createConversationMessageApiUsersUserIdConversationsConversationIdMessagePost({
-        path: {
-          user_id: USER_ID,
-          conversation_id: conversationId
-        },
-        body: {
-          message: message.trim()
-        }
-      });
+      const response =
+        await createConversationMessageApiUsersUserIdConversationsConversationIdMessagePost(
+          {
+            path: {
+              user_id: USER_ID,
+              conversation_id: conversationId,
+            },
+            body: {
+              message: message.trim(),
+            },
+          },
+        );
 
       if (response.data?.success) {
         form.reset();
       } else {
-        setError('Failed to send message');
+        setError("Failed to send message");
       }
     } catch (err) {
-      setError('Error sending message');
-      console.error('Error sending message:', err);
+      setError("Error sending message");
+      console.error("Error sending message:", err);
     } finally {
       setIsLoading(false);
     }
@@ -60,12 +63,12 @@ export default function MessageInput({ conversationId }: MessageInputProps) {
           disabled={isLoading}
           className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
         />
-        <button 
+        <button
           type="submit"
           disabled={isLoading}
           className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:bg-gray-400 disabled:cursor-not-allowed"
         >
-          {isLoading ? 'Sending...' : 'Send'}
+          {isLoading ? "Sending..." : "Send"}
         </button>
       </form>
     </div>
