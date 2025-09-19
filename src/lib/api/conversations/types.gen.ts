@@ -65,9 +65,9 @@ export type MessageBase = {
      */
     id: string;
     /**
-     * Role
+     * Is Human
      */
-    role: string;
+    is_human: boolean;
     /**
      * Content
      */

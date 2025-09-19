@@ -5,8 +5,7 @@ interface MessagesListItemProps {
 }
 
 export default function MessagesListItem({ message }: MessagesListItemProps) {
-  const isHuman = message.role === "human";
-  const isAI = message.role === "ai";
+  const isHuman = message.is_human;
 
   const formatTime = (dateString: string) => {
     const date = new Date(dateString);

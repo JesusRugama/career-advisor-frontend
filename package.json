@@ -9,6 +9,7 @@
     "lint": "eslint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "generate:api:users": "npx @hey-api/openapi-ts -i http://localhost:8001/openapi.json -o ./src/lib/api/users -c @hey-api/client-next",
     "generate:api:conversations": "npx @hey-api/openapi-ts -i http://localhost:8002/openapi.json -o ./src/lib/api/conversations -c @hey-api/client-next",
     "generate:api:prompts": "npx @hey-api/openapi-ts -i http://localhost:8004/openapi.json -o ./src/lib/api/prompts -c @hey-api/client-next",
     "generate:api": "npm-run-all generate:api:*"

@@ -42,7 +42,7 @@ export const getConversationMessagesApiUsersUserIdConversationsConversationIdMes
 
 /**
  * Create Conversation Message
- * Send a message to a specific conversation
+ * Send a message to a specific conversation and get AI career advice
  */
 export const createConversationMessageApiUsersUserIdConversationsConversationIdMessagePost = <ThrowOnError extends boolean = false>(options: Options<CreateConversationMessageApiUsersUserIdConversationsConversationIdMessagePostData, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).post<CreateConversationMessageApiUsersUserIdConversationsConversationIdMessagePostResponses, CreateConversationMessageApiUsersUserIdConversationsConversationIdMessagePostErrors, ThrowOnError>({
@@ -57,7 +57,7 @@ export const createConversationMessageApiUsersUserIdConversationsConversationIdM
 
 /**
  * Create Conversation And Message
- * Create a new conversation with the first message
+ * Create a new conversation with the first message and get AI response
  */
 export const createConversationAndMessageApiUsersUserIdMessagesPost = <ThrowOnError extends boolean = false>(options: Options<CreateConversationAndMessageApiUsersUserIdMessagesPostData, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).post<CreateConversationAndMessageApiUsersUserIdMessagesPostResponses, CreateConversationAndMessageApiUsersUserIdMessagesPostErrors, ThrowOnError>({
